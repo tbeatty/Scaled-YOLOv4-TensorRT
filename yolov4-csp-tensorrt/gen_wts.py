@@ -6,8 +6,7 @@ import sys
 
 model = Darknet('models/yolov4-csp.cfg', (512, 512))
 weights = sys.argv[1]
-device = torch_utils.select_device('1')
-# device = torch.device('cpu')
+device = torch.device('cpu')
 if weights.endswith('.pt'):  # pytorch format
     model.load_state_dict(torch.load(weights, map_location=device)['model'])
 else:  # darknet format
